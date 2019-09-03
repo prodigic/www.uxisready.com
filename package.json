@@ -1,0 +1,22 @@
+{
+  "name": "www.uxisready.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ux-is-ready.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prodigic/www.uxisready.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prodigic/www.uxisready.com/issues"
+  },
+  "homepage": "https://github.com/prodigic/www.uxisready.com#readme",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}
