@@ -77,6 +77,7 @@ const copy = {
 
 const images = ["graphic_design.svg", "graphic_testing.svg", "graphic_training.svg"];
 const clients = [["logo_dinube.png", "Dinube"], ["logo_hp.png", "Hewlett Packard"], ["logo_publicis.png", "Publicis"], ["logo_chron.png", "San Francisco Chronicle"], ["logo_atom.png", "Atom Media"], ["logo_radaptive.png", "Radaptive Inc."], ["logo_bofa.png", "Bank of America"], ["logo_snap.png", "Snapfish"]];
+const asset = (name: string) => `${import.meta.env.BASE_URL}images/${name}`;
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
@@ -85,7 +86,7 @@ export default function Home() {
   const chooseLanguage = (next: Lang) => { setLang(next); setActive(0); document.documentElement.lang = next; };
   return <main id="top">
     <header className="topbar">
-      <a className="mini-logo" href="#top" aria-label="UX is Ready home"><img src="/images/web_logo.png" alt="UX is Ready" /></a>
+      <a className="mini-logo" href="#top" aria-label="UX is Ready home"><img src={asset("web_logo.png")} alt="UX is Ready" /></a>
       <div className="header-actions">
         <nav aria-label="Primary navigation"><a className="current" href="#what-we-do">{t.nav[0]}</a><a href="#clients">{t.nav[1]}</a><a href="#contact">{t.nav[2]}</a></nav>
         <div className="language-switch" aria-label="Choose language">{(["fr","it","es","en"] as Lang[]).map(code => <button key={code} type="button" lang={code} className={lang === code ? "selected" : ""} aria-pressed={lang === code} onClick={() => chooseLanguage(code)}>{code.toUpperCase()}</button>)}</div>
@@ -94,15 +95,15 @@ export default function Home() {
     <section className="hero"><div><h1>{t.hero}</h1><p>{t.strap}</p></div></section>
     <section id="what-we-do" className="services section-shell">
       <p className="intro">{t.intro}</p>
-      <div className="service-grid">{t.services.map((service, i) => <article key={service[0]}><img className="service-icon" src={`/images/${images[i]}`} alt="" /><h2>{service[0]}</h2><p>{service[1]}</p></article>)}</div>
+      <div className="service-grid">{t.services.map((service, i) => <article key={service[0]}><img className="service-icon" src={asset(images[i])} alt="" /><h2>{service[0]}</h2><p>{service[1]}</p></article>)}</div>
     </section>
     <section className="quote"><blockquote>{t.quote}</blockquote><cite>{t.author}</cite></section>
     <section className="process-section section-shell"><h2 className="section-title">{t.processTitle}</h2>
       <div className="process-tabs" role="tablist" aria-label={t.processTitle}>{t.tabs.map((name, i) => <button key={name} className={`${["purple","yellow","blue"][i]} ${active === i ? "active" : ""}`} onClick={() => setActive(i)} role="tab" aria-selected={active === i}>{name}</button>)}</div>
-      <div className="process-content" role="tabpanel"><div className="process-copy"><p>{t.process[active][0]}</p><h3>{t.methodsTitle}</h3><p className="methods">{t.process[active][1]}</p></div><img src="/images/process.svg" alt="Learn, create, use, and iterate process" /></div>
+      <div className="process-content" role="tabpanel"><div className="process-copy"><p>{t.process[active][0]}</p><h3>{t.methodsTitle}</h3><p className="methods">{t.process[active][1]}</p></div><img src={asset("process.svg")} alt="Learn, create, use, and iterate process" /></div>
     </section>
-    <section id="clients" className="clients-section"><div className="section-shell"><h2 className="section-title">{t.clientsTitle}</h2><p>{t.clientsBody}</p><div className="client-grid">{clients.map(([image, name]) => <img key={name} src={`/images/${image}`} alt={name} />)}</div></div></section>
-    <section id="contact" className="contact"><img className="contact-logo" src="/images/logo_uxisready.svg" alt="UX is Ready" /><div className="contact-actions"><h2>{t.contact}</h2><div className="socials"><a href="mailto:hello@uxisready.com?subject=Hello!" aria-label="Email UX is Ready"><span>✉</span></a><a href="https://twitter.com/uxisready" aria-label="UX is Ready on Twitter"><span>♥</span></a></div></div></section>
+    <section id="clients" className="clients-section"><div className="section-shell"><h2 className="section-title">{t.clientsTitle}</h2><p>{t.clientsBody}</p><div className="client-grid">{clients.map(([image, name]) => <img key={name} src={asset(image)} alt={name} />)}</div></div></section>
+    <section id="contact" className="contact"><img className="contact-logo" src={asset("logo_uxisready.svg")} alt="UX is Ready" /><div className="contact-actions"><h2>{t.contact}</h2><div className="socials"><a href="mailto:hello@uxisready.com?subject=Hello!" aria-label="Email UX is Ready"><span>✉</span></a><a href="https://twitter.com/uxisready" aria-label="UX is Ready on Twitter"><span>♥</span></a></div></div></section>
     <footer><div className="footer-languages">{(["fr","it","es","en"] as Lang[]).map(code => <button key={code} type="button" className={lang === code ? "active-language" : ""} onClick={() => chooseLanguage(code)}>{{fr:"Français",it:"Italiano",es:"Español",en:"English"}[code]}</button>)}</div><span> ©2013-2014 UX is ready · {t.rights}</span></footer>
   </main>;
 }
