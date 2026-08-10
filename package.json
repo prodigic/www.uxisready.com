@@ -1,22 +1,23 @@
 {
-  "name": "www.uxisready.com",
-  "version": "1.0.0",
-  "description": "",
-  "main": "ux-is-ready.js",
+  "name": "ux-is-ready",
+  "version": "2.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.16.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/prodigic/www.uxisready.com.git"
+  "dependencies": {
+    "@vitejs/plugin-react": "6.0.2",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/prodigic/www.uxisready.com/issues"
-  },
-  "homepage": "https://github.com/prodigic/www.uxisready.com#readme",
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3"
   }
 }
